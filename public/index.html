@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Amazon Shopping</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./javascripts/amazon.js"></script>
+</head>
+
+<body ng-app="amazonApp" ng-controller="mainCtrl">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid darkBG">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+                <a class="navbar-brand" href="./index.html"><strong>Shopping Interface</strong></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="./amazonAdmin.html"><span class="glyphicon glyphicon-login"></span> Admin Interface </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="margin-left: 5em; margin-right: 5em">
+        <h1>Shopping Interface</h1>
+
+        <h2>Current Products</h2>
+        <div ng-repeat="product in products | orderBy : 'ProductName'">
+            <input type="checkbox" ng-model="product.selected">Add to Cart
+                <br>Name: 
+                {{product.ProductName}}
+                <br>Price:
+                ${{product.ProductPrice}}
+                <br>
+                <img src="./images/{{product.ProductPictureUrl}}" alt="Image" height = "200"></img>
+                <br>
+        </div>
+        <br><br>
+        <div class="text-center">
+            <button class="button" ng-click="doPurchase()">Sumbit Purchase</button>
+        </div>
+        <h2>Shopping Cart</h2>
+        <div ng-repeat="product in shoppingCart | orderBy : 'Name'">
+            <div class="container3">
+                Name: {{product.ProductName}}
+                <br>Price:
+                ${{product.ProductPrice}}
+                <br>
+                <img src="./images/{{product.ProductPictureUrl}}" alt="Image" height = "200"></img>
+            </div>
+        </div>
+    </div>
+    <div class="container2 text-center">
+        <h3 class="whiteText">Sample Products</h3>
+    </div>
+    <div style="margin-left: 5em; margin-right: 5em">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p1 class="text-center"><strong>Electronics</strong></p1><br><br>
+                    <img src="./images/electronics.jpg" class="img" alt="Random Name">
+                    <div id="demo">
+                        <br>
+                        <p2>Featuring Amazon Echo</p2>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <p1 class="text-center"><strong>Clothing</strong></p1><br><br>
+                    <img src="./images/clothing.jpg" class="img" alt="Random Name">
+                    <div id="demo">
+                        <br>
+                        <p2>Featuring Assassin's Creed Cosplay Hoodie</p2>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <p1 class="text-center"><strong>Toys</strong></p1><br><br>
+                    <img src="./images/toys.jpeg" class="img" alt="Random Name">
+                    <div id="demo">
+                        <br>
+                        <p2>Featuring Last Guest Plush</p2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer darkBG" style="padding-top: 50px; padding-bottom: 30px;">
+        <p class="centered whiteText">CS 260 Midterm 2</p>
+        <p class="centered whiteText">Nathan Mozer © 2018</p>
+    </div>
+
+</body>
+
+</html>
